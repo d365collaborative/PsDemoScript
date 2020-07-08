@@ -3,7 +3,7 @@
     $Repository = 'PSGallery'
 )
 
-$modules = @("PSFramework", "PSModuleDevelopment", "PSScriptAnalyzer")
+$modules = @("Pester", "PSFramework", "PSModuleDevelopment", "PSScriptAnalyzer")
 
 # Automatically add missing dependencies
 $data = Import-PowerShellDataFile -Path "$PSScriptRoot\..\PsDemoScript\PsDemoScript.psd1"
@@ -17,8 +17,6 @@ foreach ($dependency in $data.RequiredModules) {
         $modules += $dependency.ModuleName
     }
 }
-
-Install-Module "Pester" -MaximumVersion 4.99.99 -Force -SkipPublisherCheck -AllowClobber
 
 foreach ($module in $modules) {
     Write-Host "Installing $module" -ForegroundColor Cyan
