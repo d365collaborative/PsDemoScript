@@ -54,17 +54,17 @@ Import-Module PsDemoScript
 Start-PsDemo -Path "C:\Temp\Demo1.txt"
 ```
 ### **Multi line**
-There is support for handling the classic PowerShell multiline scripts, where the backtick ("\`") is letting you continue the script on the next line.
+There is support for handling the classic PowerShell multi line scripts, where the backtick ("\`") is letting you continue the script on the next line.
 
-It is enabled by adding `"::"` as a line before the multiline script and after the multiline script. Below is a simple single script, that you could copy & paste into a local file on your machine.
+It is enabled by adding `"::"` as a line before the multi line script and after the multi line script. Below is a simple single script, that you could copy & paste into a local file on your machine.
 ```PowerShell
 ::
-#Will allow the demo to write the script as a multiline example to the console
+#Will allow the demo to write the script as a multi line example to the console
 Get-ChildItem -Path "C:\Windows\System32\" `
 -Exclude "*.exe"
 ::
 ```
-The above script doesn't is just showing how multiline works, it doesn't show how to handle halts in the script. You can combine halt and multiline anyway you want.
+The above script doesn't is just showing how multi line works, it doesn't show how to handle halts in the script. You can combine halt and multi line anyway you want.
 
 Let's assume the the file is placed in `"C:\Temp\Demo2.txt"`, you would start a demo like this.
 ```PowerShell
