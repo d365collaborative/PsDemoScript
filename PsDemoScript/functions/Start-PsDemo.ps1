@@ -75,7 +75,7 @@ Function Start-PsDemo {
     if ($host.name -match "PowerShell ISE") {
         #Write-PSFMessage -Level Host -Message "" -Target $Var
         
-        Write-Warning "This will not work in the ISE. Use the PowerShell console host."
+        Write-PSFMessage -Level "Warning" -Message "This will not work in the ISE. Use the PowerShell console host."
         Return
     }
 
