@@ -1,7 +1,46 @@
-﻿
-#https://stackoverflow.com/questions/13710453/how-can-i-remove-a-dot-sourced-script-in-powershell
+﻿<#
+.SYNOPSIS
+Start a PowerShell demo
 
+.DESCRIPTION
+Start a PowerShell demo based on a prepared script file
+
+.PARAMETER File
+Path to the file that contains the demo script that you want to run
+
+.PARAMETER Pause
+Number of milliseconds the demo should add between each characther typed during the demo
+
+.PARAMETER Mode
+Instruct the cmdlet to either run the code, or to echo the code to the console or don't run anything
+
+Valid options:
+Execute
+Echo
+Silent
+
+.PARAMETER MockCommandsFile
+Path to the file that contains the mocked cmdlet / functions that you have prepared along your demo
+
+Useful when you want to use invalid secret details in your demo, but still produce real data
+
+Also useful for prepping output data, that should always be outputted, regardless of where you run your demo
+
+.PARAMETER SkipExitPrompt
+Instruct the cmdlet to skip the exit prompt notification
+
+.EXAMPLE
+PS C:\> Start-PsDemo -Path "c:\temp\demo.txt"
+
+This will run the prepared demo.
+
+.NOTES
+
+Author: Mötz Jensen (@Splaxi)
+
+#>
 Function Start-PsDemo {
+
     [cmdletBinding()]
 
     Param(
@@ -21,6 +60,7 @@ Function Start-PsDemo {
         [switch] $SkipExitPrompt
     )
     
+    #https://stackoverflow.com/questions/13710453/how-can-i-remove-a-dot-sourced-script-in-powershell
     if (-not [System.String]::IsNullOrEmpty($MockCommandsFile)) {
         ."$MockCommandsFile"
     }
