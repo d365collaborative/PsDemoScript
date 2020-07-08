@@ -40,6 +40,10 @@ Author: Mötz Jensen (@Splaxi)
 
 #>
 Function Start-PsDemo {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingInvokeExpression", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseOutputTypeCorrectly", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 
     [cmdletBinding()]
 
@@ -74,7 +78,6 @@ Function Start-PsDemo {
     $colorText = "White"
 
     # $colorOperator = "DarkGray"
-
     # $operatorList = @("+", "/", "*")
 
     Function PauseIt {
@@ -113,8 +116,6 @@ Function Start-PsDemo {
 
     #abort if running in the ISE
     if ($host.name -match "PowerShell ISE") {
-        #Write-PSFMessage -Level Host -Message "" -Target $Var
-        
         Write-PSFMessage -Level "Warning" -Message "This will not work in the ISE. Use the PowerShell console host."
         Return
     }
@@ -181,7 +182,6 @@ Function Start-PsDemo {
 
         $color = $colorCommandName
 
-        # Write-Host "Hit foreach"
         #SINGLE LINE COMMAND
         if ($command -ne "::" -AND $NoMultiLine) {
             Write-PSFMessage -Level "Verbose" -Message "single line command"
@@ -203,7 +203,6 @@ Function Start-PsDemo {
                     " " {
                         if (-not ($commandSeparatorActive) -and (-not ($firstQuote))) {
                             $firstSpace = $true
-                            #White
                             $color = $colorText
                         }
                     }
@@ -231,13 +230,11 @@ Function Start-PsDemo {
                     { $_ -in "-", "–" } {
                         if ($firstSpace) {
                             if (-not ($firstQuote)) {
-                                #Dark Grey
                                 $color = $colorParam
                             }
                         }
                     }
                     { $_ -in "$", "@" } {
-                        #Green
                         if (-not ($firstQuote)) {
                             $color = $colorVariable
                         }
@@ -266,7 +263,6 @@ Function Start-PsDemo {
                 
                 $char = $command[$i]
 
-                #write the character
                 Write-PSFHostColor -String "$char" -NoNewLine -DefaultColor $color
 
                 #insert a pause to simulate typing
@@ -281,10 +277,8 @@ Function Start-PsDemo {
                 }
             }
     
-            #remove the backtick line continuation character if found
-            if ($command.contains('`')) {
-                $command = $command.Replace('`', "")
-            }
+            #remove the backtick line continuation character (if any)
+            $command = $command.Replace('`', "")
     
             #Pause until ready to run the command
             $resPause = PauseIt
@@ -293,7 +287,6 @@ Function Start-PsDemo {
             elseif ($resPause -eq "normal") { $interval = { $Pause } }
 
             Microsoft.PowerShell.Utility\Write-Host "`r"
-            #execute the command unless -Echo was specified
 
             $command = $command -replace "þ", ""
 
@@ -306,13 +299,13 @@ Function Start-PsDemo {
             elseif ($Mode -eq "Silent") {
                 Write-PSFMessage -Level "Verbose" -Message -Message $command
             }
-        } #IF SINGLE COMMAND
+        }
+        #IF SINGLE COMMAND
         #START MULTILINE
         #skip the ::
         elseif ($command -eq "::" -AND $NoMultiLine) {
             $NoMultiLine = $False
             $StartMulti = $True
-            #define a variable to hold the multiline expression
             [string]$multi = ""
         } #elseif
         #FIRST LINE OF MULTILINE
@@ -334,7 +327,6 @@ Function Start-PsDemo {
                     " " {
                         if (-not ($commandSeparatorActive) -and (-not ($firstQuote))) {
                             $firstSpace = $true
-                            #White
                             $color = $colorText
                         }
                     }
@@ -362,13 +354,11 @@ Function Start-PsDemo {
                     { $_ -in "-", "–" } {
                         if ($firstSpace) {
                             if (-not ($firstQuote)) {
-                                #Dark Grey
                                 $color = $colorParam
                             }
                         }
                     }
                     { $_ -in "$", "@" } {
-                        #Green
                         if (-not ($firstQuote)) {
                             $color = $colorVariable
                         }
@@ -444,7 +434,6 @@ Function Start-PsDemo {
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
             elseif ($resPause -eq "normal") { $interval = { $Pause } }
-            #execute the command unless -Echo was specified
 
             Microsoft.PowerShell.Utility\Write-Host "`r"
 
@@ -489,7 +478,6 @@ Function Start-PsDemo {
                     " " {
                         if (-not ($commandSeparatorActive) -and (-not ($firstQuote))) {
                             $firstSpace = $true
-                            #White
                             $color = $colorText
                         }
                     }
@@ -521,13 +509,11 @@ Function Start-PsDemo {
                     { $_ -in "-", "–" } {
                         if (($firstSpace) -or ($i -eq 0)) {
                             if (-not ($firstQuote)) {
-                                #Dark Grey
                                 $color = $colorParam
                             }
                         }
                     }
                     { $_ -in "$", "@" } {
-                        #Green
                         if (-not ($firstQuote)) {
                             $color = $colorVariable
                         }
@@ -571,7 +557,6 @@ Function Start-PsDemo {
                 elseif ($resPipeCheck -eq "normal") {
                     $interval = { $Pause }
                 }
-
             }
 
             #add the command to the multiline variable and include the line break
