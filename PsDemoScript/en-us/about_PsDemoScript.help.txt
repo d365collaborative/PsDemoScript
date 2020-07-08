@@ -1,0 +1,11 @@
+﻿TOPIC
+	about_PsDemoScript
+	
+SHORT DESCRIPTION
+	Explains how to use the PsDemoScript powershell module
+	
+LONG DESCRIPTION
+	<Insert Content here>
+
+KEYWORDS
+	PsDemoScript

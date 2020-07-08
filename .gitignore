@@ -1,19 +1,19 @@
-
+﻿
 # ignore the settings folder and files for VSCode and PSS
 .vscode/*
 *.psproj
 *TempPoint*
 
 # Ignore staging info from Visual Studio
-library/d365fo.tools/.vs/*
-library/d365fo.tools/d365fo.tools/bin/*
-library/d365fo.tools/d365fo.tools/obj/*
+library/PsDemoScript/.vs/*
+library/PsDemoScript/PsDemoScript/bin/*
+library/PsDemoScript/PsDemoScript/obj/*
 
 # ignore PowerShell Studio MetaData
-d365fo.tools/d365fo.tools.psproj
-d365fo.tools/d365fo.tools.psproj.bak
-d365fo.tools/d365fo.tools.psprojs
-d365fo.tools/d365fo.tools.psproj
+PsDemoScript/PsDemoScript.psproj
+PsDemoScript/PsDemoScript.psproj.bak
+PsDemoScript/PsDemoScript.psprojs
+PsDemoScript/PsDemoScript.psproj
 
 # ignore the TestResults
 TestResults/*
