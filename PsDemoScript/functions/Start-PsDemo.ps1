@@ -82,7 +82,7 @@ Function Start-PsDemo {
     Clear-Host
 
     #strip out all comments and blank lines
-    Write-Verbose "Getting commands from $file"
+    Write-PSFMessage -Level "Verbose" -Message "Getting commands from $file"
 
     $commands = Get-Content -Path $file | Where-Object { $_ -NotMatch "#" -AND $_ -Match "\w|::|{|}|\(|\)" }
 
@@ -98,7 +98,7 @@ Function Start-PsDemo {
         $Pause
     }
 
-    Write-Verbose "Defining PipeCheck Scriptblock"
+    Write-PSFMessage -Level "Verbose" -Message "Defining PipeCheck Scriptblock"
     $PipeCheck = {
         if ($command[$i] -eq "|") {
             $resPause = PauseIt
@@ -144,7 +144,7 @@ Function Start-PsDemo {
         # Write-Host "Hit foreach"
         #SINGLE LINE COMMAND
         if ($command -ne "::" -AND $NoMultiLine) {
-            Write-Verbose "single line command"
+            Write-PSFMessage -Level "Verbose" -Message "single line command"
             for ($i = 0; $i -lt $command.length; $i++) {
      
                 $resPauseCheck = $(&$PauseCharacterCheck)
@@ -264,7 +264,7 @@ Function Start-PsDemo {
                 Microsoft.PowerShell.Utility\Write-Host $command -ForegroundColor Cyan
             }
             elseif ($Mode -eq "Silent") {
-                Write-Verbose -Message $command
+                Write-PSFMessage -Level "Verbose" -Message -Message $command
             }
         } #IF SINGLE COMMAND
         #START MULTILINE
