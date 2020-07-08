@@ -85,8 +85,11 @@ The typing speed is being measured in milliseconds, which offers great flexibili
 Running a demo several times might be a cumbersome task while you're adjusting the demo scripts, either because is simply takes time or because the objects / resources that you depend on might be unavailable.
 
 The module has a concept of mode, which translates into a run mode. The modes available are: `"Execute"`, `"Echo"` or `"Silent"`.
+
 Execute allows you to run the script, while you demo it. This will yield output to the console, just like you would expect.
+
 Echo allows you to the the command/script echoed back to the console, as a double check or double confirm. Nothing will be executed and console will contain the same statement twice, once for the demo being typed and once for the echo just after that.
+
 Silent allows you to mimic the execution of the demo, but without bloating the console or execution the demo script.
 
 You can control this as a configuration with the `Set-PsDemoMode` cmdlet, that will overwrite the default configuration. This allows you set the mode going forward, like when switching to presentation mode, and store it. Whenever you run a demo going forward, it will use the default.
