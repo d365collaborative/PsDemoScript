@@ -79,8 +79,12 @@ You can control this as a configuration with the `Set-PsDemoTypingSpeed` cmdlet,
 
 You can still override the typing speed per demo invocation, with the `-TypingSpeed` parameter.
 
-The typing speed is being measured in milliseconds, which offers great flexibilities to hit the sweet spot the feels right for you.
+The typing speed is being measured in milliseconds, which offers great flexibilities to hit the sweet spot the feels right for you. E.g.
 
+```PowerShell
+Import-Module PsDemoScript
+Start-PsDemo -Path "C:\Temp\Demo1.txt" -TypingSpeed 40
+```
 ### **To run or not to run**
 Running a demo several times might be a cumbersome task while you're adjusting the demo scripts, either because is simply takes time or because the objects / resources that you depend on might be unavailable.
 
@@ -94,7 +98,11 @@ Silent allows you to mimic the execution of the demo, but without bloating the c
 
 You can control this as a configuration with the `Set-PsDemoMode` cmdlet, that will overwrite the default configuration. This allows you set the mode going forward, like when switching to presentation mode, and store it. Whenever you run a demo going forward, it will use the default.
 
-You can still override the mode per demo invocation, with the `-Mode` parameter.
+You can still override the mode per demo invocation, with the `-Mode` parameter. E.g.
+```PowerShell
+Import-Module PsDemoScript
+Start-PsDemo -Path "C:\Temp\Demo1.txt" -Mode "Silent"
+```
 
 ### **Fake it till you make it**
 Do you need to run some demos with sensitive data, credentials or just want to control the output during the demo?
