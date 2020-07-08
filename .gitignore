@@ -4,6 +4,8 @@
 *.psproj
 *TempPoint*
 
+.history
+
 # Ignore staging info from Visual Studio
 library/PsDemoScript/.vs/*
 library/PsDemoScript/PsDemoScript/bin/*

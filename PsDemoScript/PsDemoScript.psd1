@@ -3,22 +3,22 @@
 	RootModule = 'PsDemoScript.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0'
+	ModuleVersion = '0.2.0'
 	
 	# ID used to uniquely identify this module
 	GUID = 'e44041a2-3310-4ed1-ad0e-387ac9226b02'
 	
 	# Author of this module
-	Author = 'Motz'
+	Author = 'Mötz Jensen'
 	
 	# Company or vendor of this module
-	CompanyName = 'MyCompany'
+	CompanyName = 'Essence Solutions P/S'
 	
 	# Copyright statement for this module
-	Copyright = 'Copyright (c) 2020 Motz'
+	Copyright = 'Copyright (c) 2020 Mötz Jensen'
 	
 	# Description of the functionality provided by this module
-	Description = ''
+	Description = 'This module enables you to run prepared PowerShell scripts and give it a look and feel for the audience, that you are typing in your demo.'
 	
 	# Minimum version of the Windows PowerShell engine required by this module
 	PowerShellVersion = '5.0'
