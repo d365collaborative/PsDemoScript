@@ -1,4 +1,4 @@
-
+﻿
 #https://stackoverflow.com/questions/13710453/how-can-i-remove-a-dot-sourced-script-in-powershell
 
 Function Start-PsDemo {
