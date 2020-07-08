@@ -8,7 +8,7 @@ Start a PowerShell demo based on a prepared script file
 .PARAMETER File
 Path to the file that contains the demo script that you want to run
 
-.PARAMETER Pause
+.PARAMETER TypingSpeed
 Number of milliseconds the demo should add between each characther typed during the demo
 
 .PARAMETER Mode
@@ -54,7 +54,7 @@ Function Start-PsDemo {
         [string] $File,
 
         [ValidateScript( { $_ -gt 0 })]
-        [int] $Pause = 80,
+        [int] $TypingSpeed = 80,
         
         [ValidateSet('Execute', 'Echo', 'Silent')]
         [string] $Mode = "Execute",
@@ -136,7 +136,7 @@ Function Start-PsDemo {
     $StartMulti = $False
 
     $interval = {
-        $Pause
+        $TypingSpeed
     }
 
     Write-PSFMessage -Level "Verbose" -Message "Defining PipeCheck Scriptblock"
@@ -162,7 +162,7 @@ Function Start-PsDemo {
         $command = $command.Trim()
   
         $interval = {
-            $Pause
+            $TypingSpeed
         }
 
         $count++
@@ -172,7 +172,7 @@ Function Start-PsDemo {
             $resPause = PauseIt
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
-            elseif ($resPause -eq "normal") { $interval = { $Pause } }
+            elseif ($resPause -eq "normal") { $interval = { $TypingSpeed } }
         }
    
         $firstSpace = $false
@@ -192,7 +192,7 @@ Function Start-PsDemo {
                     $interval = { 1 }
                 }
                 elseif ($resPauseCheck -eq "normal") {
-                    $interval = { $Pause }
+                    $interval = { $TypingSpeed }
                 }
                 
                 if ($($command[$i]) -eq "þ") {
@@ -273,7 +273,7 @@ Function Start-PsDemo {
                     $interval = { 1 }
                 }
                 elseif ($resPipeCheck -eq "normal") {
-                    $interval = { $Pause }
+                    $interval = { $TypingSpeed }
                 }
             }
     
@@ -284,7 +284,7 @@ Function Start-PsDemo {
             $resPause = PauseIt
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
-            elseif ($resPause -eq "normal") { $interval = { $Pause } }
+            elseif ($resPause -eq "normal") { $interval = { $TypingSpeed } }
 
             Microsoft.PowerShell.Utility\Write-Host "`r"
 
@@ -316,7 +316,7 @@ Function Start-PsDemo {
                     $interval = { 1 }
                 }
                 elseif ($resPauseCheck -eq "normal") {
-                    $interval = { $Pause }
+                    $interval = { $TypingSpeed }
                 }
                 
                 if ($($command[$i]) -eq "þ") {
@@ -404,7 +404,7 @@ Function Start-PsDemo {
                         $interval = { 1 }
                     }
                     elseif ($resPipeCheck -eq "normal") {
-                        $interval = { $Pause }
+                        $interval = { $TypingSpeed }
                     }
                 }
             } #for
@@ -418,7 +418,7 @@ Function Start-PsDemo {
             $resPause = PauseIt
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
-            elseif ($resPause -eq "normal") { $interval = { $Pause } }
+            elseif ($resPause -eq "normal") { $interval = { $TypingSpeed } }
         
         } #elseif
         #END OF MULTILINE
@@ -433,7 +433,7 @@ Function Start-PsDemo {
             $resPause = PauseIt
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
-            elseif ($resPause -eq "normal") { $interval = { $Pause } }
+            elseif ($resPause -eq "normal") { $interval = { $TypingSpeed } }
 
             Microsoft.PowerShell.Utility\Write-Host "`r"
 
@@ -458,7 +458,7 @@ Function Start-PsDemo {
             $resPause = PauseIt
             If ($resPause -eq "quit") { Return }
             elseif ($resPause -eq "fastforward") { $interval = { 1 } }
-            elseif ($resPause -eq "normal") { $interval = { $Pause } }
+            elseif ($resPause -eq "normal") { $interval = { $TypingSpeed } }
 
             for ($i = 0; $i -lt $command.length; $i++) {
 
@@ -467,7 +467,7 @@ Function Start-PsDemo {
                     $interval = { 1 }
                 }
                 elseif ($resPauseCheck -eq "normal") {
-                    $interval = { $Pause }
+                    $interval = { $TypingSpeed }
                 }
 
                 if ($($command[$i]) -eq "þ") {
@@ -555,7 +555,7 @@ Function Start-PsDemo {
                     $interval = { 1 }
                 }
                 elseif ($resPipeCheck -eq "normal") {
-                    $interval = { $Pause }
+                    $interval = { $TypingSpeed }
                 }
             }
 
